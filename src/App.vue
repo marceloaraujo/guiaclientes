@@ -1,28 +1,41 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Cliente :cliente="cliente"
+             :showAge="false"
+             />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Cliente from './components/Cliente';
+// import Produto from './components/Produto';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      cliente: {
+        nome: "Marcelo Araujo",
+        email: "marcelo.araujo@loupen.com.br",
+        idade: 29
+      }
+    }
+  },
   components: {
-    HelloWorld
+    Cliente
+    // Produto
   }
 }
 </script>
 
 <style>
-#app {
+/* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
+} */
 </style>
