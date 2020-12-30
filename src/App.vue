@@ -1,8 +1,17 @@
 <template>
   <div id="app">
-    <Cliente :cliente="cliente"
+    
+    <div v-for="cliente in clientes" :key="cliente.id">
+      <Cliente :cliente="cliente"
              :showAge="false"
              />
+      
+      <hr>
+      <h4>Edição: </h4>
+      <input type="text" v-model="cliente.nome">
+      <input type="text" v-model="cliente.email">
+    </div>
+
   </div>
 </template>
 
@@ -19,7 +28,27 @@ export default {
         nome: "Marcelo Araujo",
         email: "marcelo.araujo@loupen.com.br",
         idade: 29
-      }
+      },
+      clientes: [
+        {
+          id: 1,
+          nome: "Michael Scott",
+          email: "michael@loupen.com.br",
+          idade: 23
+        },
+        {
+          id: 2,
+          nome: "Marcelo Araujo",
+          email: "marcelo.araujo@loupen.com.br",
+          idade: 29
+        },
+        { 
+          id: 3,
+          nome: "Bruce Wayne",
+          email: "bruce@wayneenterprises.com",
+          idade: 35
+        }
+      ]
     }
   },
   components: {
