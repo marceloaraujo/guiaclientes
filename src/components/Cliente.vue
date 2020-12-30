@@ -7,6 +7,8 @@
         <p v-if="showAge">Idade: {{ cliente.idade }}</p>
         <p v-else>O usuário escondeu a idade</p>
 
+        <button @click="mudarCor">Mudar cor!</button>
+
     </div>
 </template>
 
@@ -21,6 +23,11 @@ export default {
     props: {
         cliente: Object,
         showAge: Boolean
+    },
+    methods: {
+        mudarCor: function() {
+            this.isPremium = !this.isPremium;
+        }
     }
 
 }
