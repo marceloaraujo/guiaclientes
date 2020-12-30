@@ -3,7 +3,7 @@
         <!-- objeto cliente sendo passado via prop no App.vue -->
         <h4>Nome: {{ cliente.nome }}</h4>
         <hr>
-        <p>Email: {{ cliente.email }}</p>
+        <p>Email: {{ cliente.email | processarEmail }}</p>
         <p v-if="showAge">Idade: {{ cliente.idade }}</p>
         <p v-else>O usuário escondeu a idade</p>
 
@@ -32,6 +32,11 @@ export default {
         emitirEventoDelete: function() {
             console.log('EMITINDO EVENTO...');
             this.$emit('meDelete', {cliente_id: this.cliente.id, component: this});
+        }
+    },
+    filters: {
+        processarEmail: function(value) {
+            return value.toUpperCase();
         }
     }
 
