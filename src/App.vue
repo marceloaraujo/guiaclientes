@@ -2,6 +2,7 @@
   <div id="app">
     
     <h3>Cadastro: </h3>
+    <small id="nomeErro" v-show="showError">O nome é inválido. Por favor, tente novamente!</small> <br>
     <input type="text" placeholder="Nome" v-model="nomeField"> <br>
     <input type="text" placeholder="E-mail" v-model="emailField"> <br>
     <input type="number" placeholder="Idade" v-model="idadeField"> <br>
@@ -28,6 +29,7 @@ export default {
   name: 'App',
   data() {
     return {
+      showError: false,
       nomeField: "",
       emailField: "",
       idadeField: 0,
@@ -41,13 +43,19 @@ export default {
   },
   methods: {
     cadastrarUsuario: function() {
-      this.clientes.push({
-        id: Date.now(),
-        nome: this.nomeField,
-        email: this.emailField,
-        idade: this.idadeField
-      });
-      this.limparCampos();
+      if(this.nomeField == "" || this.nomeField == " " || this.nomeField.length < 3) {
+        this.showError = true;
+        setTimeout(() => this.showError = false, 3000);
+      } else {
+        this.clientes.push({
+          id: Date.now(),
+          nome: this.nomeField,
+          email: this.emailField,
+          idade: this.idadeField
+        });
+        this.limparCampos();
+        this.showError = false;
+      }
     },
     limparCampos: function() {
       this.nomeField = "";
@@ -67,4 +75,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 } */
+  #nomeErro {
+    color: red;
+  }
 </style>
