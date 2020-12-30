@@ -54,7 +54,7 @@ export default {
     .cliente {
         background-color: #ece5e3;
         max-width: 600px;
-        height: 170px;
+        height: 200px;
         padding: 1%;
         margin-top: 5px;
     }
@@ -63,7 +63,7 @@ export default {
         background-color: black;
         color: yellow;
         max-width: 600px;
-        height: 150px;
+        height: 170px;
         padding: 1%;
         margin-top: 5px;
     }

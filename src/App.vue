@@ -11,7 +11,7 @@
 
     <hr>
 
-    <div v-for="cliente in clientes" :key="cliente.id">
+    <div v-for="cliente in orderClientes" :key="cliente.id">
       <Cliente :cliente="cliente"
              :showAge="false"
              @meDelete="deletarUsuario($event)"
@@ -23,6 +23,7 @@
 
 <script>
 
+import _ from 'lodash';
 import Cliente from './components/Cliente';
 // import Produto from './components/Produto';
 
@@ -68,6 +69,11 @@ export default {
       var clienteId = $event.cliente_id;
       var newArray = this.clientes.filter(cliente => cliente.id != clienteId);
       this.clientes = newArray;
+    }
+  },
+  computed: {
+    orderClientes: function() {
+      return _.orderBy(this.clientes, ['nome'], ['asc']);
     }
   }
 }
