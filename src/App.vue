@@ -1,15 +1,19 @@
 <template>
   <div id="app">
     
+    <h3>Cadastro: </h3>
+    <input type="text" placeholder="Nome" v-model="nomeField"> <br>
+    <input type="text" placeholder="E-mail" v-model="emailField"> <br>
+    <input type="number" placeholder="Idade" v-model="idadeField"> <br>
+
+    <button @click="cadastrarUsuario">Cadastrar</button>
+
+    <hr>
+
     <div v-for="cliente in clientes" :key="cliente.id">
       <Cliente :cliente="cliente"
              :showAge="false"
              />
-      
-      <hr>
-      <h4>Edição: </h4>
-      <input type="text" v-model="cliente.nome">
-      <input type="text" v-model="cliente.email">
     </div>
 
   </div>
@@ -24,36 +28,32 @@ export default {
   name: 'App',
   data() {
     return {
-      cliente: {
-        nome: "Marcelo Araujo",
-        email: "marcelo.araujo@loupen.com.br",
-        idade: 29
-      },
+      nomeField: "",
+      emailField: "",
+      idadeField: 0,
       clientes: [
-        {
-          id: 1,
-          nome: "Michael Scott",
-          email: "michael@loupen.com.br",
-          idade: 23
-        },
-        {
-          id: 2,
-          nome: "Marcelo Araujo",
-          email: "marcelo.araujo@loupen.com.br",
-          idade: 29
-        },
-        { 
-          id: 3,
-          nome: "Bruce Wayne",
-          email: "bruce@wayneenterprises.com",
-          idade: 35
-        }
       ]
     }
   },
   components: {
     Cliente
     // Produto
+  },
+  methods: {
+    cadastrarUsuario: function() {
+      this.clientes.push({
+        id: Date.now(),
+        nome: this.nomeField,
+        email: this.emailField,
+        idade: this.idadeField
+      });
+      this.limparCampos();
+    },
+    limparCampos: function() {
+      this.nomeField = "";
+      this.emailField = "";
+      this.idadeField = 0;
+    }
   }
 }
 </script>

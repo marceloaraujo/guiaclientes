@@ -37,7 +37,7 @@ export default {
     .cliente {
         background-color: #ece5e3;
         max-width: 600px;
-        height: 150px;
+        height: 170px;
         padding: 1%;
         margin-top: 5px;
     }
