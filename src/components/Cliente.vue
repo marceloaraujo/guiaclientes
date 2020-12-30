@@ -8,6 +8,7 @@
         <p v-else>O usuário escondeu a idade</p>
 
         <button @click="mudarCor">Mudar cor!</button>
+        <button @click="emitirEventoDelete">Deletar</button>
 
     </div>
 </template>
@@ -27,6 +28,10 @@ export default {
     methods: {
         mudarCor: function() {
             this.isPremium = !this.isPremium;
+        },
+        emitirEventoDelete: function() {
+            console.log('EMITINDO EVENTO...');
+            this.$emit('meDelete', {cliente_id: this.cliente.id, component: this});
         }
     }
 

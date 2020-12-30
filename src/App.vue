@@ -14,6 +14,7 @@
     <div v-for="cliente in clientes" :key="cliente.id">
       <Cliente :cliente="cliente"
              :showAge="false"
+             @meDelete="deletarUsuario($event)"
              />
     </div>
 
@@ -61,6 +62,12 @@ export default {
       this.nomeField = "";
       this.emailField = "";
       this.idadeField = 0;
+    },
+    deletarUsuario: function($event) {
+      console.log('RECEBENDO EVENTO DO FILHO...', $event);
+      var clienteId = $event.cliente_id;
+      var newArray = this.clientes.filter(cliente => cliente.id != clienteId);
+      this.clientes = newArray;
     }
   }
 }
